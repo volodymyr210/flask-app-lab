@@ -1,0 +1,10 @@
+body {
+    font-family: Gill Sans, sans-serif;
+}
+.container {
+    max-width: 800px;
+}
+.img-fluid {
+    max-width: 150px;
+    height: auto;
+}

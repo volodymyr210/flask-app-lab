@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<section id="about" class="py-5">
+    <h2>Про себе</h2>
+    <p>Короткий опис себе та своїх досягнень.</p>
+    <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Profile Image" class="img-fluid rounded">
+</section>
+
+<section id="education" class="py-5">
+    <h2>Освіта</h2>
+    <p>Інформація про вашу освіту.</p>
+</section>
+
+<section id="skills" class="py-5">
+    <h2>Навички</h2>
+    <p>Перелік ваших навичок.</p>
+</section>
+
+<section id="experience" class="py-5">
+    <h2>Хоббі</h2>
+    <p>Перелік захоплень.</p>
+</section>
+{% endblock %}
