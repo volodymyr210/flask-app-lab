@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        <h2>Welcome, {{ username }}!</h2>
+        <a href="{{ url_for('user_name.logout') }}" class="btn btn-danger">Logout</a>
+        
+        <h3 class="mt-4">Manage Cookies</h3>
+        <form method="POST" class="mb-3">
+            <input type="hidden" name="action" value="add">
+            <div class="form-group">
+                <label for="cookie_key">Cookie Key</label>
+                <input type="text" class="form-control" id="cookie_key" name="cookie_key" required>
+            </div>
+            <div class="form-group">
+                <label for="cookie_value">Cookie Value</label>
+                <input type="text" class="form-control" id="cookie_value" name="cookie_value" required>
+            </div>
+            <div class="form-group">
+                <label for="cookie_age">Cookie Expiration (seconds)</label>
+                <input type="number" class="form-control" id="cookie_age" name="cookie_age" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Cookie</button>
+        </form>
+
+        <form method="POST" class="mb-3">
+            <input type="hidden" name="action" value="delete">
+            <div class="form-group">
+                <label for="cookie_key_delete">Cookie Key to Delete</label>
+                <input type="text" class="form-control" id="cookie_key_delete" name="cookie_key" required>
+            </div>
+            <button type="submit" class="btn btn-danger">Delete Cookie</button>
+        </form>
+
+        <h3 class="mt-4">Current Cookies</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in cookies.items() %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
