@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Add New Post</h2>
+    
+    <form method="POST" action="" novalidate>
+        {{ form.hidden_tag() }}
+        {% from 'form_macros.html' import render_field %}
+        
+        <div class="row">
+            <div class="col-md-6">
+                {{ render_field(form.title, placeholder="Enter post title") }}
+            </div>
+            <div class="col-md-6">
+                {{ render_field(form.category, class_="form-select") }}
+            </div>
+        </div>
+        
+        <div class="form-group">
+            {{ render_field(form.content, placeholder="Enter content here...") }}
+        </div>
+        
+        <div class="form-check mb-3">
+            {{ form.is_active(class="form-check-input") }}
+            {{ form.is_active.label(class="form-check-label") }}
+        </div>
+        
+        <div class="form-group">
+            <label>{{ form.publish_date.label }}</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                {{ form.publish_date(class="form-control") }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">{{ form.submit.label.text }}</button>
+    </form>
+</div>
+{% endblock %}
+<style>
+    .form-check-label {
+    margin-left: 5px;
+}
+
+.text-danger small {
+    font-size: 0.9em;
+    color: #dc3545;
+}
+
+</style>

@@ -12,7 +12,7 @@ def get_profile():
 
     username_value = session["username"]
 
-    # Обработка POST-запросов для добавления и удаления куки
+   
     if request.method == "POST":
         action = request.form.get("action")
         cookie_key = request.form.get("cookie_key")
@@ -30,14 +30,14 @@ def get_profile():
             flash(f"Success: Cookie '{cookie_key}' deleted successfully.", "success")
             return response
 
-    # Получение всех cookies
+    
     cookies = request.cookies
-    return render_template("profile.html", username=username_value, cookies=cookies)  # Передаем cookies в шаблон
+    return render_template("profile.html", username=username_value, cookies=cookies)  
 
 
 @bp.route("/login", methods=['GET', 'POST'])
 def login():
-    # Задаем правильні дані для входу
+    
     valid_username = "admin"
     valid_password = "secret"
 
@@ -52,6 +52,11 @@ def login():
             return redirect(url_for("user_name.get_profile"))
         else:
             flash("Error: Invalid username or password.", "danger")
+
+        if request.method == 'POST':
+            username = request.form['username']
+            session['username'] = username
+            return redirect(url_for('add_post'))
     
     return render_template("login.html")
 
