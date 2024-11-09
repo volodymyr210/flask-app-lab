@@ -8,7 +8,6 @@
         "publication_date": "2024-11-05",
         "author": "John"
     },
-
     {
         "id": 3,
         "title": "\u043f\u043e\u0441\u04421",
@@ -18,7 +17,6 @@
         "publication_date": "2022-03-21",
         "author": "Anonymous"
     },
-
     {
         "id": 4,
         "title": "gdsfgsdg",
@@ -26,6 +24,15 @@
         "category": "technology",
         "is_active": true,
         "publication_date": "1242-04-12",
+        "author": "admin"
+    },
+    {
+        "id": 4,
+        "title": "ertert",
+        "content": "ewtewrtw",
+        "category": "arts",
+        "is_active": true,
+        "publication_date": "1233-12-31",
         "author": "admin"
     }
 ]

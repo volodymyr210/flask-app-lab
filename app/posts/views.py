@@ -47,9 +47,8 @@ def view_posts():
     posts = load_posts()
     return render_template('posts.html', posts=posts)
 
-@post_bp.errorhandler(404)
+@post_bp.app_errorhandler(404)
 def page_not_found(error):
-
     return render_template('404.html'), 404
 
 @post_bp.route('/posts')
