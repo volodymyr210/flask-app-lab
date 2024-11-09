@@ -33,13 +33,14 @@ def add_post():
             "category": form.category.data,
             "is_active": form.is_active.data,
             "publication_date": form.publish_date.data.strftime('%Y-%m-%d'),
-            "author": session.get('username', 'Anonymous')  # Отримати ім'я автора із сесії
+            "author": session.get('username', 'Anonymous')  
         }
         posts.append(new_post)
         save_posts(posts)
         flash('Post added successfully!', 'success')
         return redirect(url_for('posts.view_posts'))
     return render_template('add_post.html', form=form)
+
 
 @post_bp.route('/posts')
 def view_posts():
@@ -50,3 +51,27 @@ def view_posts():
 def page_not_found(error):
 
     return render_template('404.html'), 404
+
+@post_bp.route('/posts')
+def get_posts():
+    try:
+        with open(POSTS_FILE, 'r') as f:
+            posts = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        posts = []
+
+    return render_template("posts.html", posts=posts)
+
+@post_bp.route('/posts/<int:id>')
+def detail_post(id):
+    try:
+        with open(POSTS_FILE, 'r') as f:
+            posts = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        abort(404)
+    
+    post = next((post for post in posts if int(post["id"]) == id), None)
+    if post is None:
+        abort(404)
+    
+    return render_template("detail_post.html", post=post)
