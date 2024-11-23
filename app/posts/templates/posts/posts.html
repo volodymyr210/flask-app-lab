@@ -2,17 +2,30 @@
 
 {% block title %}POSTS{% endblock %}
 
+{% block css %} 
+    <link rel="stylesheet" href="{{ url_for('.static', filename='css/posts.css') }}">
+{% endblock %}
+
 {% block content %}
+
+<h1 class="myclass">Articles</h1>
+
+<div class="container mt-5">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
 
-<div class="container mt-5">
+
+
+        <!-- Кнопка для додавання посту -->
+     <form action="{{ url_for('.add_post') }}" class="mb-4">
+        <button type="submit" class="btn btn-primary">Add post</button>
+    </form>
     <div class="row">
         {% for post in posts %}
             <div class="col-md-6 col-lg-4 mt-5">
                 <div class="blog-grid">
                     <div class="blog-grid-img position-relative">
-                        <img alt="img" src="https://www.bootdey.com/image/480x480/00FFFF/000000">
+                        <img src="{{ url_for('.static', filename='img/default.png') }}">
                     </div>
                     <div class="blog-grid-text p-4">
                         <h3 class="h5 mb-3">
@@ -45,81 +58,5 @@
         </div>
     </div>
 </div>
-<style>body {
-    margin-top: 20px;
 
-
-}
-
-.blog-grid {
-    position: relative;
-    box-shadow: 0 1rem 1.75rem 0 rgba(45, 55, 75, 0.1);
-    border: 1px solid rgba(220, 224, 229, 0.6);
-    border-radius: 0.25rem;
-    transition: all .2s ease-in-out;
-}
-
-.blog-grid:hover {
-    transform: translateY(-5px);
-}
-
-.blog-grid img {
-    width: 100%;
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
-}
-
-.blog-grid-text {
-    position: relative;
-}
-
-.blog-grid-text h3 {
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-    line-height: 1.4;
-}
-
-.meta-style2 ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.meta-style2 ul li {
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 500;
-    margin-right: 15px;
-}
-
-.meta-style2 ul li i {
-    margin-right: 5px;
-    color: #ce1a29;
-}
-
-.pagination ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.pagination ul li {
-    display: inline;
-}
-
-.pagination a {
-    padding: 0 18px;
-    line-height: 40px;
-    border: 1px solid #dbdbdb;
-    background: #fff;
-    text-decoration: none;
-    color: #575a7b;
-}
-
-.pagination .active a {
-    background-color: #f7f7f7;
-    color: #999;
-    cursor: default;
-}
-</style>
 {% endblock %}

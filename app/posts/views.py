@@ -1,3 +1,4 @@
+from flask import Flask
 import json
 from . import post_bp
 from flask import render_template, abort, flash, redirect, url_for, session
@@ -20,7 +21,7 @@ def save_posts(posts):
     """Save posts to JSON file."""
     with open(POSTS_FILE, 'w') as f:
         json.dump(posts, f, indent=4)
-
+        
 @post_bp.route('/add_post', methods=['GET', 'POST'])
 def add_post():
     form = PostForm()
@@ -38,14 +39,10 @@ def add_post():
         posts.append(new_post)
         save_posts(posts)
         flash('Post added successfully!', 'success')
-        return redirect(url_for('posts.view_posts'))
+        return redirect(url_for('posts.get_posts'))
     return render_template('add_post.html', form=form)
 
 
-@post_bp.route('/posts')
-def view_posts():
-    posts = load_posts()
-    return render_template('posts.html', posts=posts)
 
 @post_bp.app_errorhandler(404)
 def page_not_found(error):

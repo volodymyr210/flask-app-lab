@@ -1,0 +1,83 @@
+.myclass {
+    background-color: #bbff00; /* Fully opaque */
+    border-radius: 5px; 
+    color: #333; 
+    font-family: Arial, sans-serif; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+body {
+    margin-top: 20px;
+
+
+}
+
+.blog-grid {
+    position: relative;
+    box-shadow: 0 1rem 1.75rem 0 rgba(45, 55, 75, 0.1);
+    border: 1px solid rgba(220, 224, 229, 0.6);
+    border-radius: 0.25rem;
+    transition: all .2s ease-in-out;
+}
+
+.blog-grid:hover {
+    transform: translateY(-5px);
+}
+
+.blog-grid img {
+    width: 100%;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+.blog-grid-text {
+    position: relative;
+}
+
+.blog-grid-text h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.meta-style2 ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.meta-style2 ul li {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 15px;
+}
+
+.meta-style2 ul li i {
+    margin-right: 5px;
+    color: #ce1a29;
+}
+
+.pagination ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.pagination ul li {
+    display: inline;
+}
+
+.pagination a {
+    padding: 0 18px;
+    line-height: 40px;
+    border: 1px solid #dbdbdb;
+    
+    text-decoration: none;
+    color: #575a7b;
+}
+
+.pagination .active a {
+   
+    color: #999;
+    cursor: default;
+}
