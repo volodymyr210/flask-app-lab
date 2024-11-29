@@ -1,31 +1,33 @@
 {% extends 'base.html' %}
 
+{% block title %}Edit Post{% endblock %}
+
 {% block content %}
 <div class="container mt-4">
-    <h2 class="mb-4">Add New Post</h2>
-    
-    <form method="POST" action="" novalidate>
+    <h2>Edit Post - {{ post.title }}</h2>
+
+    <form method="POST">
         {{ form.hidden_tag() }}
-        {% from 'form_macros.html' import render_field %}
-        
+        {% from "form_macros.html" import render_field %}
+
         <div class="row">
             <div class="col-md-6">
-                {{ render_field(form.title, placeholder="Enter post title", class_="form-control") }}
+                {{ render_field(form.title, placeholder="Edit post title") }}
             </div>
             <div class="col-md-6">
                 {{ render_field(form.category, class_="form-select") }}
             </div>
         </div>
-        
+
         <div class="form-group">
-            {{ render_field(form.content, placeholder="Enter content here...", class_="form-control") }}
+            {{ render_field(form.content, placeholder="Edit content here...") }}
         </div>
-        
+
         <div class="form-check mb-3">
             {{ form.is_active(class="form-check-input") }}
             {{ form.is_active.label(class="form-check-label") }}
         </div>
-        
+
         <div class="form-group">
             <label for="{{ form.publish_date.id }}">{{ form.publish_date.label }}</label>
             <div class="input-group">
@@ -34,28 +36,8 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3">{{ form.submit.label.text }}</button>
+        <button type="submit" class="btn btn-success mt-3">Save Changes</button>
+        <a href="{{ url_for('posts.get_posts') }}" class="btn btn-secondary mt-3">Cancel</a>
     </form>
 </div>
 {% endblock %}
-
-<style>
-    .form-check-label {
-        margin-left: 5px;
-    }
-
-    .text-danger small {
-        font-size: 0.9em;
-        color: #dc3545;
-    }
-
-    /* Опціональні стилі для покращення вигляду дати */
-    .input-group-text i {
-        color: #6c757d;
-    }
-
-    .form-select {
-        padding: 0.375rem 0.75rem;
-        border-radius: 0.25rem;
-    }
-</style>
